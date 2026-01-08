@@ -2,12 +2,12 @@
 
 BASE=$(dirname "$0" | xargs realpath)
 
-for d in sequential_traces concurrent_traces; do
-	cd "$BASE/$d"
+for d in sequential concurrent; do
+	cd "$BASE/${d}_traces"
 
 	cat > meson.build << EOF
-${d}_gz = files(
-$(find . -name '*.json.gz' | sed "s/^/  '/; s/$/',/")
-)
+sections_gz += { '$d': files(
+$(find . -name '*.json.gz' | sed "s/^.\//  '/; s/$/',/")
+)}
 EOF
 done

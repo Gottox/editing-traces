@@ -1,4 +1,4 @@
-concurrent_traces_gz = files(
-  './clownschool.json.gz',
-  './friendsforever.json.gz',
-)
+sections_gz += { 'concurrent': files(
+  'clownschool.json.gz',
+  'friendsforever.json.gz',
+)}
